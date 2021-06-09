@@ -6,7 +6,7 @@
 #    By: fballest <fballest@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 12:11:55 by fballest          #+#    #+#              #
-#    Updated: 2021/01/30 11:34:27 by fballest         ###   ########.fr        #
+#    Updated: 2021/06/09 11:48:44 by fballest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,29 +16,20 @@
 
 UNAME_S := $(shell uname -s)
 
-ifeq ($(UNAME_S), Linux)
-	LIBS := -lm -lbsd -lX11 -lXext
-	MLX = mlx_linux/libmlx.a
-	MINILIBX = mlx_linux
-	INCLUDES = -I/usr/include -I. -Iincludes/ -I$(MINILIBX) -I$(LIBFT)
-endif
 ifeq ($(UNAME_S), Darwin)
 	LIBS := -lz -framework OpenGL -framework AppKit
-	MLX = mlx_ios/libmlx.dylib
-	MINILIBX = mlx_ios
+	MLX = minilibx/libmlx.dylib
+	MINILIBX = minilibx
 	INCLUDES = -I/usr/include -I. -Iincludes/ -I$(MINILIBX) -I$(LIBFT)
 endif
 
 # FILE NAME #
 
-NAME = cub3D
+NAME = fractol
 
 # SOURCES #
 
-SRC = 	ft_cub3d ft_structinit ft_cubemain ft_freedom ft_getmap ft_utilsa \
-		ft_gettexture ft_gettextureb ft_gettexturec ft_readfile ft_readfileb \
-		ft_utilsb ft_structinitb ft_raycasting ft_raycastingb ft_raycastingc \
-		ft_raycastingd ft_raycastinge ft_utilsc\
+SRC = 	ft_fractolmain ft_juliafractol ft_mandelfractol
 
 SRCCUB = $(addsuffix .c, $(SRC))
 OBJS = $(SRCCUB:.c=.o)
@@ -69,14 +60,14 @@ $(NAME): $(OBJS) $(GNL_OBJS)
 	@cd libft && make re
 	@echo "$(BLUE)==========CREATING MINILIBX==========$(RESET)"
 	@make -C ${MINILIBX}
-	@echo "$(BLUE)==========CREATING CUBE==========$(RESET)"
+	@echo "$(BLUE)==========CREATING FRACTOL==========$(RESET)"
 	@$(CC) $(INCLUDES) ${OBJS} $(GNL_OBJS) $(LIBFT) $(MLX) ${LIBS} -o ${NAME}
 	@echo "Done"
 	@echo "$(BLUE)==========COPY LIBMLX.DYLIB==========$(RESET)"
 	@cp ${MLX} ./
 	@echo "Done"
 	@echo "$(GREEN)==========WELLDONE==========$(RESET)"
-	@echo "Success creating Cub3D file"
+	@echo "Success creating fractol file"
 
 clean:
 	@$(RM) $(OBJS) $(GNL_OBJS)
