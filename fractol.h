@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:56 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/09 12:54:08 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/10 13:57:54 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,19 +50,6 @@
 /*
 **WORKING STRUCTURES
 */
-typedef struct s_frc
-{
-	void	*ptr;
-	void	*win;
-	int		rx;
-	int		ry;
-	void	*img;
-	char	*addr;
-	int		sizeli;
-	int		bpp;
-	int		endian;
-	t_key	*key;
-}				t_frc;
 
 typedef struct s_key
 {
@@ -75,6 +62,31 @@ typedef struct s_key
 	int		up;
 	int		down;
 }				t_key;
+
+typedef struct s_frc
+{
+	void	*ptr;
+	void	*win;
+	void	**img;
+	char	*addr;
+	int		rx;
+	int		ry;
+	int		sili;
+	int		bxp;
+	int		endian;
+	double	cRe;
+	double	cIm;
+	double	newRe;
+	double	newIm;
+	double	oldRe;
+	double	oldIm;
+	double	zoom;
+	double	movex;
+	double	movey;
+	int		max_iter;
+	int		color;
+	t_key	*key;
+}				t_frc;
 
 /*
 **FUNTION IN FILES
@@ -90,6 +102,10 @@ void	ft_freemen (t_frc *frc);
 **FILE FT_JULIAFRACTOL
 */
 int		ft_juliafractol(t_frc *frc);
+int		ft_juliadraw(t_frc *frc);
+void	ft_paintjulia(t_frc *frc);
+int		ft_to_rgb(int r, int g, int b);
+void	ft_setinitialvalues(t_frc *frc);
 
 /*
 **FILE FT_MANDELFRACTOL
@@ -99,7 +115,9 @@ int		ft_mandelfractol(t_frc *frc);
 /*
 **FILE FT_UTILS
 */
-int				ft_keypress(int key, t_frc *frc);
-int				ft_keyrelease(int key, t_frc *frc);
+int		ft_keypress(int key, t_frc *frc);
+int		ft_keyrelease(int key, t_frc *frc);
+void	ft_mlx_pixel_put(t_frc *frc, int x, int y, int color);
+void	ft_exit_game(t_frc *frc);
 
 #endif

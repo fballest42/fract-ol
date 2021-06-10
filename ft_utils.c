@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:39:50 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/09 12:57:03 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/10 09:54:06 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	ft_keypress(int key, t_frc *frc)
 		frc->key->lft = 1;
 	if (key == RIGHT_KEY)
 		frc->key->rgh = 1;
-    if (key == UP_KEY)
+	if (key == UP_KEY)
 		frc->key->up = 1;
 	if (key == DOWN_KEY)
 		frc->key->down = 1;
@@ -56,7 +56,18 @@ int	ft_keyrelease(int key, t_frc *frc)
 	return (0);
 }
 
+void	ft_mlx_pixel_put(t_frc *frc, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = frc->addr + (y * frc->sili + x * (frc->bxp / 8));
+	*(unsigned int *)dst = color;
+}
+
 void	ft_exit_game(t_frc *frc)
 {
-
+	mlx_destroy_window(frc->ptr, frc->win);
+	frc->ptr = NULL;
+	free(frc->ptr);
+	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:35 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/09 11:51:09 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/10 13:31:21 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,9 @@ int	ft_exiterror (t_frc *frc, char *str, int num)
 int	main(int argc, char **argv)
 {
 	t_frc	*frc;
+	t_key	*key;
 
+	key = NULL;
 	frc = ft_calloc(sizeof(t_frc), 1);
 	if (!frc)
 		ft_exiterror(frc, "Error:\nMemory not allocated\n", -1);

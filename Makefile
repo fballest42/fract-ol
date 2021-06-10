@@ -6,7 +6,7 @@
 #    By: fballest <fballest@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 12:11:55 by fballest          #+#    #+#              #
-#    Updated: 2021/06/09 11:48:44 by fballest         ###   ########.fr        #
+#    Updated: 2021/06/10 13:35:55 by fballest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,13 +29,10 @@ NAME = fractol
 
 # SOURCES #
 
-SRC = 	ft_fractolmain ft_juliafractol ft_mandelfractol
+SRC = 	ft_fractolmain ft_juliafractol ft_mandelfractol ft_utils
 
 SRCCUB = $(addsuffix .c, $(SRC))
 OBJS = $(SRCCUB:.c=.o)
-
-SRCGNL = gnl/get_next_line.c gnl/get_next_line_utils.c
-GNL_OBJS = $(SRCGNL:.c=.o)
 
 LIBFT = libft/libft.a
 
@@ -61,7 +58,7 @@ $(NAME): $(OBJS) $(GNL_OBJS)
 	@echo "$(BLUE)==========CREATING MINILIBX==========$(RESET)"
 	@make -C ${MINILIBX}
 	@echo "$(BLUE)==========CREATING FRACTOL==========$(RESET)"
-	@$(CC) $(INCLUDES) ${OBJS} $(GNL_OBJS) $(LIBFT) $(MLX) ${LIBS} -o ${NAME}
+	@$(CC) $(INCLUDES) ${OBJS} $(LIBFT) $(MLX) ${LIBS} -o ${NAME}
 	@echo "Done"
 	@echo "$(BLUE)==========COPY LIBMLX.DYLIB==========$(RESET)"
 	@cp ${MLX} ./

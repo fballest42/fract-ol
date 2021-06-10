@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:42:05 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/09 11:51:24 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/10 13:34:18 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 int	ft_mandelfractol(t_frc *frc)
 {
+	frc->rx = 0;
 	return (0);
 }
