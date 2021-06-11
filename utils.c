@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.c                                         :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:39:50 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/10 09:54:06 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/11 14:11:13 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,14 @@ int	ft_keyrelease(int key, t_frc *frc)
 	return (0);
 }
 
+int	ft_exit_game(t_frc *frc)
+{
+	mlx_destroy_window(frc->ptr, frc->win);
+	frc->ptr = NULL;
+	free(frc->ptr);
+	exit(0);
+}
+
 void	ft_mlx_pixel_put(t_frc *frc, int x, int y, int color)
 {
 	char	*dst;
@@ -64,10 +72,7 @@ void	ft_mlx_pixel_put(t_frc *frc, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-void	ft_exit_game(t_frc *frc)
+int	ft_to_rgb(int r, int g, int b)
 {
-	mlx_destroy_window(frc->ptr, frc->win);
-	frc->ptr = NULL;
-	free(frc->ptr);
-	exit(0);
+	return ((b * 1) + (g * 256) + (r * 256 * 256));
 }

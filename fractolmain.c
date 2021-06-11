@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:35 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/10 13:31:21 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/11 09:19:58 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,8 @@ int	main(int argc, char **argv)
 		else if (ft_strncmp(argv[1], "Mandelbrot", ft_strlen(argv[1])) == 0)
 			ft_mandelfractol(frc);
 		else
-			ft_exiterror(frc,
-				"Error:\nfractol set not valid, try 'Julia' or 'Mandelbrot'.",
+			ft_exiterror(frc, ft_strjoin("Error:\n",
+					"fractol set not valid, try:\n 'Julia'\n or\n 'Mandelbrot'.\n"),
 				-3);
 	}
 	else

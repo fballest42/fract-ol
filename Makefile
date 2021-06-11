@@ -6,7 +6,7 @@
 #    By: fballest <fballest@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 12:11:55 by fballest          #+#    #+#              #
-#    Updated: 2021/06/10 13:35:55 by fballest         ###   ########.fr        #
+#    Updated: 2021/06/11 14:10:15 by fballest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ NAME = fractol
 
 # SOURCES #
 
-SRC = 	ft_fractolmain ft_juliafractol ft_mandelfractol ft_utils
+SRC = 	fractolmain juliafractol juliafractol_2 mandelfractol utils
 
 SRCCUB = $(addsuffix .c, $(SRC))
 OBJS = $(SRCCUB:.c=.o)
