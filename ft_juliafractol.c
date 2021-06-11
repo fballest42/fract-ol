@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:42:00 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/10 14:20:25 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/11 01:24:49 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_juliafractol(t_frc *frc)
 {
-	frc->rx = 1200;
-	frc->ry = 800;
+	frc->rx = 1280;
+	frc->ry = 1024;
 	frc->ptr = mlx_init();
 	frc->win = mlx_new_window(frc->ptr, frc->rx, frc->ry, "fractol Julia");
 	ft_setinitialvalues(frc);
@@ -37,6 +37,9 @@ void	ft_setinitialvalues(t_frc *frc)
 	frc->max_iter = 300;
 	frc->cRe = -0.7;
 	frc->cIm = 0.27015;
+	frc->r = 10;
+	frc->g = 10;
+	frc->b = 180;
 }
 
 int	ft_juliadraw(t_frc *frc)
@@ -70,7 +73,9 @@ int	ft_juliadraw(t_frc *frc)
 					break ;
 				i++;
 			}
-			frc->color = rgb_to_hsv(i % 256, 255, 255 * (i < frc->max_iter));
+			ft_rgb_to_hsv(frc, i % 256, 64, 255 * (i < frc->max_iter));
+			ft_hsv_to_rgb(frc);
+			frc->color = ft_to_rgb(frc->r, frc->g, frc->b);
 			ft_mlx_pixel_put(frc, x, y, frc->color);
 			x++;
 		}
@@ -86,57 +91,56 @@ int	ft_to_rgb(int r, int g, int b)
 	return ((b * 1) + (g * 256) + (r * 256 * 256));
 }
 
-// int	HSVtoRGB(t_frc *frc)
-// {
-// 	int i;
-// 	float RGB_min;
-// 	float RGB_max;
-// 	float RGB_Adj;
-// 	int difs;
-// 	RGB_max = v*2.55f;
-// 	RGB_min = RGB_max*(100 - s) / 100.0f;
+void	ft_hsv_to_rgb(t_frc *frc)
+{
+	int i;
+	float RGB_min;
+	float RGB_max;
+	float RGB_Adj;
+	float difs;
 
-// 	i = h / 60;
-// 	difs = h % 60;
-// 	RGB_Adj = (RGB_max - RGB_min)*difs / 60.0f;
-
-// 	if (i == 0)
-// 	{
-// 		*r = RGB_max;
-// 		*g = RGB_min + RGB_Adj;
-// 		*b = RGB_min;
-// 	}
-// 	else if (i == 1)
-// 	{
-// 		*r = RGB_max - RGB_Adj;
-// 		*g = RGB_max;
-// 		*b = RGB_min;
-// 	}
-// 	else if (i == 2)
-// 	{
-// 		*r = RGB_min;
-// 		*g = RGB_max;
-// 		*b = RGB_min + RGB_Adj;
-// 	}
-// 	else if (i == 3)
-// 	{
-// 		*r = RGB_min;
-// 		*g = RGB_max - RGB_Adj;
-// 		*b = RGB_max;
-// 	}
-// 	else if (i == 4)
-// 	{
-// 		*r = RGB_min + RGB_Adj;
-// 		*g = RGB_min;
-// 		*b = RGB_max;
-// 	}
-// 	else
-// 	{
-// 		*r = RGB_max;
-// 		*g = RGB_min;
-// 		*b = RGB_max - RGB_Adj;
-// 	}
-// }
+	RGB_max = frc->v * 2.55f;
+	RGB_min = RGB_max*(100 - frc->s) / 100.0f;
+	i = frc->h / 60;
+	difs = (int)frc->h % 60;
+	RGB_Adj = (RGB_max - RGB_min) * difs / 60.0f;
+	if (i == 0)
+	{
+		frc->r = RGB_max;
+		frc->g = RGB_min + RGB_Adj;
+		frc->b = RGB_min;
+	}
+	else if (i == 1)
+	{
+		frc->r = RGB_max - RGB_Adj;
+		frc->g = RGB_max;
+		frc->b = RGB_min;
+	}
+	else if (i == 2)
+	{
+		frc->r = RGB_min;
+		frc->g = RGB_max;
+		frc->b = RGB_min + RGB_Adj;
+	}
+	else if (i == 3)
+	{
+		frc->r = RGB_min;
+		frc->g = RGB_max - RGB_Adj;
+		frc->b = RGB_max;
+	}
+	else if (i == 4)
+	{
+		frc->r = RGB_min + RGB_Adj;
+		frc->g = RGB_min;
+		frc->b = RGB_max;
+	}
+	else
+	{
+		frc->r = RGB_max;
+		frc->g = RGB_min;
+		frc->b = RGB_max - RGB_Adj;
+	}
+}
 
 float	max(float a, float b, float c)
 {
@@ -148,37 +152,25 @@ float	min(float a, float b, float c)
    return ((a < b)? (a < c ? a : c) : (b < c ? b : c));
 }
 
-int rgb_to_hsv(float r, float g, float b)
+void	ft_rgb_to_hsv(t_frc *frc, float r, float g, float b)
 {
-   // R, G, B values are divided by 255
-   // to change the range from 0..255 to 0..1:
-   float h, s, v;
-   r /= 255.0;
-   g /= 255.0;
-   b /= 255.0;
-   float cmax = max(r, g, b); // maximum of r, g, b
-   float cmin = min(r, g, b); // minimum of r, g, b
-   float diff = cmax-cmin; // diff of cmax and cmin.
-   if (cmax == cmin)
-      h = 0;
-   else if (cmax == r)
-      h = fmod((60 * ((g - b) / diff) + 360), 360.0);
-   else if (cmax == g)
-      h = fmod((60 * ((b - r) / diff) + 120), 360.0);
-   else if (cmax == b)
-      h = fmod((60 * ((r - g) / diff) + 240), 360.0);
-   // if cmax equal zero
-      if (cmax == 0)
-         s = 0;
-      else
-         s = (diff / cmax) * 100;
-   // compute v
-   v = cmax * 100;
-   printf("h s v=(%f, %f, %f)\n", h, s, v );
-   return 0;
+	frc->cmax = max(r, g, b);
+	frc->cmin = min(r, g, b);
+	frc->diff = frc->cmax - frc->cmin;
+	r = r / 255.0;
+	g = g / 255.0;
+	b = b / 255.0;
+	if (frc->cmax == frc->cmin)
+		frc->h = 0;
+	else if (frc->cmax == r)
+		frc->h = fmod((60 * ((g - b) / frc->diff) + 360), 360.0);
+	else if (frc->cmax == g)
+		frc->h = fmod((60 * ((b - r) / frc->diff) + 120), 360.0);
+	else if (frc->cmax == b)
+		frc->h = fmod((60 * ((r - g) / frc->diff) + 240), 360.0);
+	if (frc->cmax == 0)
+        frc->s = 0;
+    else
+        frc->s = (frc->diff / frc->cmax) * 100;
+	frc->v = frc->cmax * 100;
 }
-
-// // void	ft_paintjulia(frc)
-// // { 
-
-// // }

@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:56 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/10 13:57:54 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/11 01:07:54 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,15 @@ typedef struct s_frc
 	double	movey;
 	int		max_iter;
 	int		color;
+	int		r;
+	int		g;
+	int		b;
+	float	h;
+	float	s;
+	float	v;
+	float	cmax;
+	float	cmin;
+	float	diff;
 	t_key	*key;
 }				t_frc;
 
@@ -105,7 +114,11 @@ int		ft_juliafractol(t_frc *frc);
 int		ft_juliadraw(t_frc *frc);
 void	ft_paintjulia(t_frc *frc);
 int		ft_to_rgb(int r, int g, int b);
+void	ft_rgb_to_hsv(t_frc *frc, float r, float g, float b);
 void	ft_setinitialvalues(t_frc *frc);
+void	ft_hsv_to_rgb(t_frc *frc);
+float	max(float a, float b, float c);
+float	min(float a, float b, float c);
 
 /*
 **FILE FT_MANDELFRACTOL
