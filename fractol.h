@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:56 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/11 14:19:36 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/15 13:09:50 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,14 @@
 */
 # ifdef __APPLE__
 #  include "minilibx/mlx.h"
-#  define A_KEY 0
-#  define W_KEY 13
-#  define S_KEY 1
-#  define D_KEY 2
-#  define LEFT_KEY 123
-#  define RIGHT_KEY 124
+#  define C_KEY 8
+#  define H_KEY 4
+#  define R_KEY 15
 #  define ESC_KEY 53
-#  define LEFT_SHIFT 257
-#  define X_BTN 17
 #  define UP_KEY 126
 #  define DOWN_KEY 125
+#  define LEFT_KEY 123
+#  define RIGHT_KEY 124
 #  define MVSPD 0.07
 #  define RTSPD 0.04363325
 # endif
@@ -53,10 +50,12 @@
 
 typedef struct s_key
 {
-	int		w;
-	int		s;
-	int		a;
-	int		d;
+	int		c;
+	int		h;
+	int		r;
+	int		zin;
+	int		zou;
+	int		esc;
 	int		lft;
 	int		rgh;
 	int		up;
@@ -69,11 +68,22 @@ typedef struct s_frc
 	void	*win;
 	void	**img;
 	char	*addr;
+	void	*ptr2;
+	void	*win2;
+	void	**img2;
+	char	*addr2;
 	int		rx;
 	int		ry;
+	int		rx2;
+	int		ry2;
+	int		mou_x;
+	int		mou_y;
 	int		sili;
 	int		bxp;
 	int		end;
+	int		sili2;
+	int		bxp2;
+	int		end2;
 	double	cRe;
 	double	cIm;
 	double	newRe;
@@ -83,6 +93,10 @@ typedef struct s_frc
 	double	zoom;
 	double	movex;
 	double	movey;
+	double	time;
+	double	oldtime;
+	double	frametime;
+	int		help;
 	int		max_iter;
 	int		color;
 	float	r;
@@ -95,12 +109,11 @@ typedef struct s_frc
 	float	p;
 	float	q;
 	float	t;
+	float	range;
 	int		i;
 	float	cmax;
 	float	cmin;
 	float	diff;
-	int		showText;
-	int		shift;
 	t_key	*key;
 }				t_frc;
 
@@ -145,8 +158,11 @@ int		ft_mandelfractol(t_frc *frc);
 */
 int		ft_keypress(int key, t_frc *frc);
 int		ft_keyrelease(int key, t_frc *frc);
+int		ft_key_hook(t_frc *frc);
 void	ft_mlx_pixel_put(t_frc *frc, int x, int y, int color);
 int		ft_to_rgb(int r, int g, int b);
 int		ft_exit_game(t_frc *frc);
+void	ft_restartfractol(t_frc *frc);
+void	ft_helpmenu(t_frc *frc);
 
 #endif

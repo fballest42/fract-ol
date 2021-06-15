@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:42:00 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/11 14:25:40 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/15 13:29:04 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 int	ft_juliafractol(t_frc *frc)
 {
-	frc->rx = 1280;
-	frc->ry = 1024;
+	ft_setinitialvalues(frc);
 	frc->ptr = mlx_init();
 	frc->win = mlx_new_window(frc->ptr, frc->rx, frc->ry, "fractol Julia");
-	ft_setinitialvalues(frc);
 	mlx_hook(frc->win, 17, 1L << 17, ft_exit_game, frc);
 	mlx_hook(frc->win, 2, 1L << 0, ft_keypress, frc);
 	mlx_hook(frc->win, 3, 1L << 1, ft_keyrelease, frc);
-	// mlx_hook(frc->win,MASCARA, MASCARA, ft_mouseprees, frc);
-	// mlx_hook(frc->win,MASCARA, MASCARA, ft_mouserelease, frc);
+	// mlx_mouse_hook(frc->win,MASCARA, MASCARA, ft_mouseprees, frc);
+	// mlx_,mouse_hook(frc->win,MASCARA, MASCARA, ft_mouserelease, frc);
 	mlx_loop_hook(frc->ptr, ft_juliadraw, frc);
 	mlx_loop(frc->ptr);
 	return (0);
@@ -31,13 +29,15 @@ int	ft_juliafractol(t_frc *frc)
 
 void	ft_setinitialvalues(t_frc *frc)
 {
+	frc->rx = 1280;
+	frc->ry = 1024;
 	frc->zoom = 1;
 	frc->movex = 0;
 	frc->movey = 0;
 	frc->max_iter = 300;
 	frc->cRe = -0.7;
 	frc->cIm = 0.27015;
-	frc->shift = 0;
+	frc->range = 0.f;
 }
 
 int	ft_juliadraw(t_frc *frc)
@@ -47,6 +47,7 @@ int	ft_juliadraw(t_frc *frc)
 
 	x = 0;
 	y = 0;
+	//ft_key_hook(frc);
 	frc->img = mlx_new_image(frc->ptr, frc->rx, frc->ry);
 	frc->addr = mlx_get_data_addr(frc->img, &frc->bxp, &frc->sili, &frc->end);
 	while (y < frc->ry)
@@ -59,6 +60,8 @@ int	ft_juliadraw(t_frc *frc)
 		}
 		y++;
 	}
+	if (frc->help == 1)
+		ft_helpmenu(frc);
 	mlx_put_image_to_window(frc->ptr, frc->win, frc->img, 0, 0);
 	mlx_destroy_image(frc->ptr, frc->img);
 	return (0);
@@ -84,9 +87,9 @@ void	ft_calculatecolor(t_frc *frc, int x, int y)
 			break ;
 		i++;
 	}
-	frc->h = i % 256 - (frc->shift % 256);
-	frc->s = 255 - frc->shift;
-	frc->v = (255 - frc->shift) * (i < frc->max_iter);
+	frc->h = i % 256 - ((int)frc->range % 256);
+	frc->s = 255 - frc->range;
+	frc->v = (255 - frc->range) * (i < frc->max_iter);
 	ft_hsv_to_rgb(frc);
 	frc->color = (int)ft_to_rgb(frc->r, frc->g, frc->b);
 	ft_mlx_pixel_put(frc, x, y, frc->color);
