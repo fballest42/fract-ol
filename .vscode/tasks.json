@@ -7,7 +7,7 @@
         "label": "build",
         "type": "shell",
         "command": "make re"
-      }
+      },
       {
         "type": "typescript",
         "tsconfig": "tsconfig.json",

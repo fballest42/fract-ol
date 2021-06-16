@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:42:00 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/15 13:29:04 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/16 13:49:52 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_setinitialvalues(t_frc *frc)
 	frc->max_iter = 300;
 	frc->cRe = -0.7;
 	frc->cIm = 0.27015;
-	frc->range = 0.f;
+	frc->range = 0.0;
 }
 
 int	ft_juliadraw(t_frc *frc)
@@ -47,9 +47,9 @@ int	ft_juliadraw(t_frc *frc)
 
 	x = 0;
 	y = 0;
-	//ft_key_hook(frc);
 	frc->img = mlx_new_image(frc->ptr, frc->rx, frc->ry);
 	frc->addr = mlx_get_data_addr(frc->img, &frc->bxp, &frc->sili, &frc->end);
+	ft_key_hook(frc);
 	while (y < frc->ry)
 	{
 		x = 0;
@@ -60,9 +60,9 @@ int	ft_juliadraw(t_frc *frc)
 		}
 		y++;
 	}
+	mlx_put_image_to_window(frc->ptr, frc->win, frc->img, 0, 0);
 	if (frc->help == 1)
 		ft_helpmenu(frc);
-	mlx_put_image_to_window(frc->ptr, frc->win, frc->img, 0, 0);
 	mlx_destroy_image(frc->ptr, frc->img);
 	return (0);
 }

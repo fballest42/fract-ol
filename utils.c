@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:39:50 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/15 13:30:45 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/16 13:08:57 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,21 @@
 int	ft_keypress(int key, t_frc *frc)
 {
 	if (key == C_KEY)
-		frc->key->c = 1;
-	if (key == H_KEY)
+		frc->key.c = 1;
+	if (key == H_KEY && frc->help == 0)
 		frc->help = 1;
+	if (key == H_KEY && frc->help == 1)
+		frc->help = 0;
 	if (key == R_KEY)
-		frc->key->r = 1;
+		frc->key.r = 1;
 	if (key == LEFT_KEY)
-		frc->key->lft = 1;
+		frc->key.lft = 1;
 	if (key == RIGHT_KEY)
-		frc->key->rgh = 1;
+		frc->key.rgh = 1;
 	if (key == UP_KEY)
-		frc->key->up = 1;
+		frc->key.up = 1;
 	if (key == DOWN_KEY)
-		frc->key->down = 1;
+		frc->key.down = 1;
 	if (key == ESC_KEY)
 		ft_exit_game(frc);
 	return (0);
@@ -36,17 +38,21 @@ int	ft_keypress(int key, t_frc *frc)
 int	ft_keyrelease(int key, t_frc *frc)
 {
 	if (key == C_KEY)
-		frc->key->c = 0;
+		frc->key.c = 0;
 	if (key == R_KEY)
-		frc->key->r = 0;
+		frc->key.r = 0;
+	if (key == H_KEY && frc->help == 0)
+		frc->help = 0;
+	if (key == H_KEY && frc->help == 1)
+		frc->help = 1;
 	if (key == LEFT_KEY)
-		frc->key->lft = 0;
+		frc->key.lft = 0;
 	if (key == RIGHT_KEY)
-		frc->key->rgh = 0;
+		frc->key.rgh = 0;
 	if (key == UP_KEY)
-		frc->key->up = 0;
+		frc->key.up = 0;
 	if (key == DOWN_KEY)
-		frc->key->down = 0;
+		frc->key.down = 0;
 	return (0);
 }
 
@@ -56,21 +62,21 @@ int	ft_key_hook(t_frc *frc)
 	// frc->oldtime = frc->time;
 	// frc->time = 
 	// frc->frametime = frc->time - frc->oldtime;
-	if (frc->key->lft == 1)
+	if (frc->key.lft == 1)
 		frc->movex = frc->movex - 10 * frc->zoom;
-	else if (frc->key->rgh == 1)
+	else if (frc->key.rgh == 1)
 		frc->movex = frc->movex + 10 * frc->zoom;
-	else if (frc->key->up == 1)
+	else if (frc->key.up == 1)
 		frc->movey = frc->movey - 10 * frc->zoom;
-	else if (frc->key->down == 1)
+	else if (frc->key.down == 1)
 		frc->movey = frc->movey + 10 * frc->zoom;
-	else if (frc->key->c == 1)
+	else if (frc->key.c == 1)
 	{
-		frc->range = frc->range + 2.5;
+		frc->range = frc->range + 25;
 		if (frc->range > 255)
 			frc->range = 0;
 	}
-	else if (frc->key->r == 1)
+	else if (frc->key.r == 1)
 		ft_restartfractol(frc);
 	return (0);
 }
@@ -79,8 +85,6 @@ void	ft_helpmenu(t_frc *frc)
 {
 	mlx_string_put(frc->ptr, frc->win, 160, 20, 0xffffff,
 		"---- MENU DE AYUDA ----");
-	mlx_string_put(frc->ptr, frc->win, 0, 40, 0xffffff,
-		"======================================================");
 	mlx_string_put(frc->ptr, frc->win, 0, 60, 0xffffff,
 		"TECLA H  ------------->   Muestra u oculta la ayuda.");
 	mlx_string_put(frc->ptr, frc->win, 0, 80, 0xffffff,
@@ -98,7 +102,9 @@ void	ft_helpmenu(t_frc *frc)
 	mlx_string_put(frc->ptr, frc->win, 0, 200, 0xffffff,
 		"SCROLL RATON Y +/-  -->   Aumenta o disminuye el zoom.");
 	mlx_string_put(frc->ptr, frc->win, 0, 220, 0xffffff,
-		"MOVER EL RATON  ------>   Prueba, algo hara.");
+		"MOVER EL RATON  ------>   Prueba algo hara.");
+	mlx_string_put(frc->ptr, frc->win, 0, 220, 0xffffff,
+		" ");
 }
 
 void	ft_restartfractol(t_frc *frc)

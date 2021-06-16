@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:56 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/15 13:09:50 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/16 10:25:31 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ typedef struct s_frc
 	float	cmax;
 	float	cmin;
 	float	diff;
-	t_key	*key;
+	t_key	key;
 }				t_frc;
 
 /*
