@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:56 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/16 10:25:31 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/18 11:20:43 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@
 # include <errno.h>
 # include <sys/stat.h>
 # include "libft/libft.h"
+# include "minilibx/mlx.h"
 
 /*
 **KEYS DEFINITION
 */
 # ifdef __APPLE__
-#  include "minilibx/mlx.h"
 #  define C_KEY 8
 #  define H_KEY 4
 #  define R_KEY 15
@@ -40,7 +40,9 @@
 #  define DOWN_KEY 125
 #  define LEFT_KEY 123
 #  define RIGHT_KEY 124
-#  define MVSPD 0.07
+#  define MAS_KEY 6
+#  define MENOS_KEY 7
+#  define ZOOM_MOD 1.001
 #  define RTSPD 0.04363325
 # endif
 
@@ -60,6 +62,8 @@ typedef struct s_key
 	int		rgh;
 	int		up;
 	int		down;
+	int		mas;
+	int		men;
 }				t_key;
 
 typedef struct s_frc
@@ -68,22 +72,13 @@ typedef struct s_frc
 	void	*win;
 	void	**img;
 	char	*addr;
-	void	*ptr2;
-	void	*win2;
-	void	**img2;
-	char	*addr2;
 	int		rx;
 	int		ry;
-	int		rx2;
-	int		ry2;
 	int		mou_x;
 	int		mou_y;
 	int		sili;
 	int		bxp;
 	int		end;
-	int		sili2;
-	int		bxp2;
-	int		end2;
 	double	cRe;
 	double	cIm;
 	double	newRe;
@@ -164,5 +159,6 @@ int		ft_to_rgb(int r, int g, int b);
 int		ft_exit_game(t_frc *frc);
 void	ft_restartfractol(t_frc *frc);
 void	ft_helpmenu(t_frc *frc);
+int		ft_mouse_hook(int clic, int x, int y, t_frc *frc);
 
 #endif
