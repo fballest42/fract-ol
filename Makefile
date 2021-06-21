@@ -6,7 +6,7 @@
 #    By: fballest <fballest@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 12:11:55 by fballest          #+#    #+#              #
-#    Updated: 2021/06/11 14:10:15 by fballest         ###   ########.fr        #
+#    Updated: 2021/06/21 10:21:31 by fballest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS) $(GNL_OBJS)
 	@echo "$(BLUE)==========CREATING LIBFT==========$(RESET)"
-	@cd libft && make re
+	@cd libft && make
 	@echo "$(BLUE)==========CREATING MINILIBX==========$(RESET)"
 	@make -C ${MINILIBX}
 	@echo "$(BLUE)==========CREATING FRACTOL==========$(RESET)"

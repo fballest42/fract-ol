@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:39:50 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/18 13:37:23 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/21 13:55:08 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,40 @@
 
 int	ft_mouse_hook(int clic, int mx, int my, t_frc *frc)
 {
-	
-	// if (mx > 0 && mx < frc->rx)
-	// 	frc->movex = frc->movex + (mx - (frc->rx / 2));
-	// if (my > 0 && my < frc->ry)
-	// 	frc->movey = frc->movey + (my - (frc->ry / 2));
-	// mx = my;
+	int	dx;
+	int	dy;
+
+	if (mx >= (frc->rx / 2) && my < (frc->ry / 2))
+	{
+		dx = abs(mx - (frc->rx / 2));
+		dy = abs((frc->ry / 2) - my);
+	}
+	else if (mx >= (frc->rx / 2) && my >= (frc->ry / 2))
+	{
+		dx = abs(mx - (frc->rx / 2));//CAMBIAR DESDE AQUI
+		dy = abs((frc->ry / 2) - my);
+	}
+	dx = abs(mx - (frc->rx / 2));
+	dy = abs((frc->ry / 2) - mx);
 	if (clic == 5)
 	{
-		frc->movex = (mx * 0.003) - (((frc->rx - mx) * 0.003) / 2);
-		frc->movey =  (my * 0.003) - (((frc->ry - my) * 0.003) / 2);
-		frc->zoom = frc->zoom * pow(1.001, 24);
-	}
-	else if (clic == 0)
-	{
-		frc->movex = (mx * 0.003) - (((frc->rx - mx) * 0.003) / 2);
-		frc->movey =  (my * 0.003) - (((frc->ry - my) * 0.003) / 2);
+		printf("CLICK = %d MX = %d MY = %d\n", clic, mx, my);
+		frc->zoom = frc->zoom / pow(1.001, 24);
+		frc->movex = (dx / frc->zoom) * 0.003;
+		frc->movey = (dy / frc->zoom) * 0.003;
 	}
 	else if (clic == 4)
 	{
-		frc->movex = (mx * 0.003) - (((frc->rx - mx) * 0.003) / 2);
-		frc->movey =  (my * 0.003) - (((frc->ry - my) * 0.003) / 2);
-		frc->zoom = frc->zoom / pow(1.001, 24);
+		printf("CLICK = %d MX = %d MY = %d\n", clic, mx, my);
+		frc->zoom = frc->zoom * pow(1.001, 24);
+		frc->movex = (dx * frc->zoom) * 0.003;
+		frc->movey = (dy * frc->zoom) * 0.003;
+	}
+	else
+	{
+		printf("CLICK = %d MX = %d MY = %d\n", clic, mx, my);
+		frc->movex = dx * 0.003 * 24 / frc->zoom);
+		frc->movey = dy * 24 / frc->zoom);
 	}
 	return (0);
 }
