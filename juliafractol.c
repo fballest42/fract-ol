@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:42:00 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/21 11:42:14 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/22 14:09:59 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int	ft_juliafractol(t_frc *frc)
 {
+	frc->fractol = 1;
 	ft_setinitialvalues(frc);
 	frc->ptr = mlx_init();
-	frc->win = mlx_new_window(frc->ptr, frc->rx, frc->ry, "fractol Julia");
-	mlx_hook(frc->win, 17, 1L << 17, ft_exit_game, frc);
+	frc->win = mlx_new_window(frc->ptr, frc->rx, frc->ry, "Julia");
+	mlx_mouse_hook(frc->win, ft_mouse_hook, frc);
+	mlx_hook(frc->win, 6, 1L << 7, ft_mouse_move, frc);
 	mlx_hook(frc->win, 2, 1L << 0, ft_keypress, frc);
 	mlx_hook(frc->win, 3, 1L << 1, ft_keyrelease, frc);
-	mlx_mouse_hook(frc->win, ft_mouse_hook, frc);
-	// mlx_mouse_hook(frc->win,MASCARA, MASCARA, ft_mouserelease, frc);
+	mlx_hook(frc->win, 17, 1L << 17, ft_exit_game, frc);
 	mlx_loop_hook(frc->ptr, ft_juliadraw, frc);
 	mlx_loop(frc->ptr);
 	return (0);
@@ -37,7 +38,7 @@ void	ft_setinitialvalues(t_frc *frc)
 	frc->max_iter = 250;
 	frc->cRe = -0.7;
 	frc->cIm = 0.27015;
-	frc->range = 0.0;
+	frc->range = 0;
 }
 
 int	ft_juliadraw(t_frc *frc)
@@ -85,10 +86,10 @@ void	ft_calculatecolor(t_frc *frc, int x, int y)
 			break ;
 		i++;
 	}
-	frc->h = i % 256 - ((int)frc->range % 256);
-	frc->s = 255 - frc->range;
-	frc->v = (255 - frc->range) * (i < frc->max_iter);
+	frc->h = i % 256;
+	frc->s = 255;
+	frc->v = 255 * (i < frc->max_iter);
 	ft_hsv_to_rgb(frc);
-	frc->color = (int)ft_to_rgb(frc->r, frc->g, frc->b);
+	frc->color = frc->range + (int)ft_to_rgb(frc->r, frc->g, frc->b);
 	ft_mlx_pixel_put(frc, x, y, frc->color);
 }

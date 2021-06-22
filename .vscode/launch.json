@@ -19,7 +19,7 @@
 			"type": "cppdbg",
 			"request": "launch",
 			"program": "${workspaceFolder}/fractol",
-			"args": ["Julia"],
+			"args": ["Mandelbrot"],
 			"stopAtEntry": false,
 			"cwd": "${workspaceFolder}",
 			"environment": [],

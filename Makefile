@@ -6,7 +6,7 @@
 #    By: fballest <fballest@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 12:11:55 by fballest          #+#    #+#              #
-#    Updated: 2021/06/21 10:21:31 by fballest         ###   ########.fr        #
+#    Updated: 2021/06/22 14:09:38 by fballest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ ifeq ($(UNAME_S), Darwin)
 	LIBS := -lz -framework OpenGL -framework AppKit
 	MLX = minilibx/libmlx.dylib
 	MINILIBX = minilibx
-	INCLUDES = -I/usr/include -I. -Iincludes/ -I$(MINILIBX) -I$(LIBFT)
+	INCLUDES = -I$(MINILIBX) -I$(LIBFT)
 endif
 
 # FILE NAME #
@@ -29,7 +29,7 @@ NAME = fractol
 
 # SOURCES #
 
-SRC = 	fractolmain juliafractol juliafractol_2 mandelfractol utils
+SRC = 	fractolmain juliafractol mandelfractol utils utilsb utilsc
 
 SRCCUB = $(addsuffix .c, $(SRC))
 OBJS = $(SRCCUB:.c=.o)

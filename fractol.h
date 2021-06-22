@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:56 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/18 11:20:43 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/22 13:55:55 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@
 #  define DOWN_KEY 125
 #  define LEFT_KEY 123
 #  define RIGHT_KEY 124
-#  define MAS_KEY 6
-#  define MENOS_KEY 7
+#  define Z_KEY 6
+#  define X_KEY 7
 #  define ZOOM_MOD 1.001
 #  define RTSPD 0.04363325
 # endif
@@ -68,6 +68,7 @@ typedef struct s_key
 
 typedef struct s_frc
 {
+	int		fractol;
 	void	*ptr;
 	void	*win;
 	void	**img;
@@ -109,6 +110,9 @@ typedef struct s_frc
 	float	cmax;
 	float	cmin;
 	float	diff;
+	char	*str;
+	double	pr;
+	double	pi;
 	t_key	key;
 }				t_frc;
 
@@ -147,6 +151,10 @@ void	ft_printhelp(t_frc *frc);
 **FILE FT_MANDELFRACTOL
 */
 int		ft_mandelfractol(t_frc *frc);
+void	ft_setinitialvalues_mandel(t_frc *frc);
+int		ft_mandeldraw(t_frc *frc);
+void	ft_calculatecolor_mandel(t_frc *frc, int x, int y);
+void	ft_settozero(t_frc *frc, int x, int y);
 
 /*
 **FILE FT_UTILS
@@ -154,11 +162,16 @@ int		ft_mandelfractol(t_frc *frc);
 int		ft_keypress(int key, t_frc *frc);
 int		ft_keyrelease(int key, t_frc *frc);
 int		ft_key_hook(t_frc *frc);
-void	ft_mlx_pixel_put(t_frc *frc, int x, int y, int color);
-int		ft_to_rgb(int r, int g, int b);
+int		ft_mouse_hook(int clic, int x, int y, t_frc *frc);
+int		ft_mouse_move(int x, int y, t_frc *frc);
+
+/*
+**FILE FT_UTILSB
+*/
 int		ft_exit_game(t_frc *frc);
 void	ft_restartfractol(t_frc *frc);
 void	ft_helpmenu(t_frc *frc);
-int		ft_mouse_hook(int clic, int x, int y, t_frc *frc);
+void	ft_mlx_pixel_put(t_frc *frc, int x, int y, int color);
+int		ft_to_rgb(int r, int g, int b);
 
 #endif
