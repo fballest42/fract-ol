@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:56 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/22 13:55:55 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/22 17:58:41 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,5 +173,11 @@ void	ft_restartfractol(t_frc *frc);
 void	ft_helpmenu(t_frc *frc);
 void	ft_mlx_pixel_put(t_frc *frc, int x, int y, int color);
 int		ft_to_rgb(int r, int g, int b);
+
+int		ft_newtonfractol(t_frc *frc);
+void	ft_setinitialvalues_newton(t_frc *frc);
+int		ft_newtondraw(t_frc *frc);
+void	ft_calculatecolor_newton(t_frc *frc, int x, int y);
+void	ft_settozero(t_frc *frc, int x, int y);
 
 #endif
