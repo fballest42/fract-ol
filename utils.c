@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:39:50 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/22 14:09:54 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/23 11:46:29 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,9 @@ int	ft_key_hook(t_frc *frc)
 	else if (frc->key.down == 1)
 		frc->movey = frc->movey + 0.0003 * 50 / frc->zoom;
 	else if (frc->key.mas == 1)
-		frc->zoom = frc->zoom * pow(1.001, 50);
+		frc->zoom = frc->zoom * pow(ZOOM_MOD, 50);
 	else if (frc->key.men == 1)
-		frc->zoom = frc->zoom / pow(1.001, 50);
+		frc->zoom = frc->zoom / pow(ZOOM_MOD, 50);
 	else if (frc->key.c == 1)
 	{
 		frc->range = frc->range + 25;

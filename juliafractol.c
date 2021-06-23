@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:42:00 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/22 17:26:26 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/23 13:07:45 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_juliafractol(t_frc *frc)
 	frc->ptr = mlx_init();
 	frc->win = mlx_new_window(frc->ptr, frc->rx, frc->ry, "Julia");
 	mlx_mouse_hook(frc->win, ft_mouse_hook, frc);
-	mlx_hook(frc->win, 6, 1L << 7, ft_mouse_move, frc);
+	mlx_hook(frc->win, 6, 1L << 6, ft_mouse_move, frc);
 	mlx_hook(frc->win, 2, 1L << 0, ft_keypress, frc);
 	mlx_hook(frc->win, 3, 1L << 1, ft_keyrelease, frc);
 	mlx_hook(frc->win, 17, 1L << 17, ft_exit_game, frc);

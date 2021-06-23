@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:42:05 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/22 14:09:56 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/23 13:08:02 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_mandelfractol(t_frc *frc)
 	frc->ptr = mlx_init();
 	frc->win = mlx_new_window(frc->ptr, frc->rx, frc->ry, "Mandelbrot");
 	mlx_mouse_hook(frc->win, ft_mouse_hook, frc);
-	mlx_hook(frc->win, 6, 1L << 7, ft_mouse_move, frc);
+	mlx_hook(frc->win, 6, 1L << 6, ft_mouse_move, frc);
 	mlx_hook(frc->win, 2, 1L << 0, ft_keypress, frc);
 	mlx_hook(frc->win, 3, 1L << 1, ft_keyrelease, frc);
 	mlx_hook(frc->win, 17, 1L << 17, ft_exit_game, frc);
@@ -50,7 +50,6 @@ int	ft_mandeldraw(t_frc *frc)
 
 	x = 0;
 	y = 0;
-	ft_key_hook(frc);
 	frc->img = mlx_new_image(frc->ptr, frc->rx, frc->ry);
 	frc->addr = mlx_get_data_addr(frc->img, &frc->bxp, &frc->sili, &frc->end);
 	while (y < frc->ry)
@@ -64,6 +63,7 @@ int	ft_mandeldraw(t_frc *frc)
 		y++;
 	}
 	mlx_put_image_to_window(frc->ptr, frc->win, frc->img, 0, 0);
+	ft_key_hook(frc);
 	mlx_destroy_image(frc->ptr, frc->img);
 	return (0);
 }

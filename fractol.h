@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:56 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/22 17:58:41 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/23 13:26:51 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,20 +31,17 @@
 /*
 **KEYS DEFINITION
 */
-# ifdef __APPLE__
-#  define C_KEY 8
-#  define H_KEY 4
-#  define R_KEY 15
-#  define ESC_KEY 53
-#  define UP_KEY 126
-#  define DOWN_KEY 125
-#  define LEFT_KEY 123
-#  define RIGHT_KEY 124
-#  define Z_KEY 6
-#  define X_KEY 7
-#  define ZOOM_MOD 1.001
-#  define RTSPD 0.04363325
-# endif
+# define C_KEY 8
+# define H_KEY 4
+# define R_KEY 15
+# define ESC_KEY 53
+# define UP_KEY 126
+# define DOWN_KEY 125
+# define LEFT_KEY 123
+# define RIGHT_KEY 124
+# define Z_KEY 6
+# define X_KEY 7
+# define ZOOM_MOD 1.001
 
 /*
 **WORKING STRUCTURES
@@ -113,6 +110,17 @@ typedef struct s_frc
 	char	*str;
 	double	pr;
 	double	pi;
+	double	radio;
+	double	side;
+	double	cx;
+	double	cy;
+	int		xi;
+	int		yi;
+	int		w;
+	double	xx;
+	double	yy;
+	double	incx;
+	double	incy;
 	t_key	key;
 }				t_frc;
 
@@ -135,20 +143,13 @@ int		ft_juliadraw(t_frc *frc);
 void	ft_calculatecolor(t_frc *frc, int x, int y);
 
 /*
-**FILE FT_JULIAFRACTOL_2
-*/
-void	ft_hsv_to_rgb(t_frc *frc);
-void	ft_hsv_to_rgb2(t_frc *frc);
-void	ft_hsv_to_rgb3(t_frc *frc);
-
-/*
 **FILE KEYANDMOUSE
 */
-void	ft_keyandmouse(t_frc *frc);
-void	ft_printhelp(t_frc *frc);
+// void	ft_keyandmouse(t_frc *frc);
+// void	ft_printhelp(t_frc *frc);
 
 /*
-**FILE FT_MANDELFRACTOL
+**FILE MANDELFRACTOL
 */
 int		ft_mandelfractol(t_frc *frc);
 void	ft_setinitialvalues_mandel(t_frc *frc);
@@ -157,7 +158,7 @@ void	ft_calculatecolor_mandel(t_frc *frc, int x, int y);
 void	ft_settozero(t_frc *frc, int x, int y);
 
 /*
-**FILE FT_UTILS
+**FILE UTILS
 */
 int		ft_keypress(int key, t_frc *frc);
 int		ft_keyrelease(int key, t_frc *frc);
@@ -166,7 +167,7 @@ int		ft_mouse_hook(int clic, int x, int y, t_frc *frc);
 int		ft_mouse_move(int x, int y, t_frc *frc);
 
 /*
-**FILE FT_UTILSB
+**FILE UTILSB
 */
 int		ft_exit_game(t_frc *frc);
 void	ft_restartfractol(t_frc *frc);
@@ -174,10 +175,20 @@ void	ft_helpmenu(t_frc *frc);
 void	ft_mlx_pixel_put(t_frc *frc, int x, int y, int color);
 int		ft_to_rgb(int r, int g, int b);
 
+/*
+**FILE UTILSC
+*/
+void	ft_hsv_to_rgb(t_frc *frc);
+void	ft_hsv_to_rgb2(t_frc *frc);
+void	ft_hsv_to_rgb3(t_frc *frc);
+
+/*
+**FILE NEWTON
+*/
 int		ft_newtonfractol(t_frc *frc);
 void	ft_setinitialvalues_newton(t_frc *frc);
 int		ft_newtondraw(t_frc *frc);
 void	ft_calculatecolor_newton(t_frc *frc, int x, int y);
-void	ft_settozero(t_frc *frc, int x, int y);
+void	ft_putpixelnewton(t_frc *frc, int i, int x, int y);
 
 #endif
