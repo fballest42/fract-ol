@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/20 13:47:48 by fballest          #+#    #+#             */
-/*   Updated: 2020/10/08 15:08:33 by fballest         ###   ########.fr       */
+/*   Updated: 2019/11/20 14:21:06 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,6 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (!(s == 0))
+	if (s)
 		write(fd, s, ft_strlen(s));
 }

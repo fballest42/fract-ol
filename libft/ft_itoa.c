@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/21 09:19:25 by fballest          #+#    #+#             */
-/*   Updated: 2020/10/06 08:58:13 by fballest         ###   ########.fr       */
+/*   Updated: 2021/03/05 11:30:06 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 #include "libft.h"
 
-static int		ft_intlen(int nb)
+static int	ft_intlen(int nb)
 {
 	int		len;
 	long	num;
@@ -36,7 +36,7 @@ static int		ft_intlen(int nb)
 	return (len);
 }
 
-char			*ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	char	*str;
 	long	nbr;
@@ -44,7 +44,8 @@ char			*ft_itoa(int n)
 
 	i = 0;
 	nbr = n;
-	if (!(str = (char *)malloc(sizeof(char) * (ft_intlen(n) + 1))))
+	str = (char *)malloc(sizeof(char) * (ft_intlen(n) + 1));
+	if (!str)
 		return (NULL);
 	if (n < 0)
 	{

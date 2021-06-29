@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/25 08:26:19 by fballest          #+#    #+#             */
-/*   Updated: 2020/10/06 09:00:02 by fballest         ###   ########.fr       */
+/*   Updated: 2021/03/04 11:19:05 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	if (s && f)
 	{
-		if (!(str = ft_strdup((char const *)s)))
+		str = ft_strdup((char const *)s);
+		if (!str)
 			return (NULL);
 		while (str[i] != 0)
 		{

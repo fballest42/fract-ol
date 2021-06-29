@@ -6,15 +6,15 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 11:47:43 by fballest          #+#    #+#             */
-/*   Updated: 2020/10/06 09:00:31 by fballest         ###   ########.fr       */
+/*   Updated: 2021/03/04 11:21:24 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_toupper(int c)
+int	ft_toupper(int c)
 {
-	unsigned char ch;
+	unsigned char	ch;
 
 	if (c >= 97 && c <= 122)
 	{

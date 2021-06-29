@@ -6,15 +6,15 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 12:32:02 by fballest          #+#    #+#             */
-/*   Updated: 2020/10/06 09:00:29 by fballest         ###   ########.fr       */
+/*   Updated: 2021/03/04 11:20:58 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tolower(int c)
+int	ft_tolower(int c)
 {
-	unsigned char ch;
+	unsigned char	ch;
 
 	if (c >= 65 && c <= 90)
 	{

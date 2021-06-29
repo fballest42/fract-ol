@@ -6,13 +6,13 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 13:06:07 by fballest          #+#    #+#             */
-/*   Updated: 2020/10/06 08:57:44 by fballest         ###   ########.fr       */
+/*   Updated: 2021/03/04 10:57:31 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_atoi(const char *str)
+int	ft_atoi(const char *str)
 {
 	int							sign;
 	unsigned long long int		res;

@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/13 11:11:05 by fballest          #+#    #+#             */
-/*   Updated: 2020/10/08 15:05:30 by fballest         ###   ########.fr       */
+/*   Updated: 2021/03/04 11:17:15 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*ft_strdup(const char *s1)
 	i = 0;
 	while (s1[ln] != '\0')
 		ln++;
-	str = (char*)malloc(ln + 1);
+	str = (char *)malloc(ln + 1);
 	if (!str)
 		return (0);
 	while (s1[i] != '\0')

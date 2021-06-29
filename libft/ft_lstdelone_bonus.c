@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/29 09:18:07 by fballest          #+#    #+#             */
-/*   Updated: 2020/10/06 08:58:34 by fballest         ###   ########.fr       */
+/*   Updated: 2021/04/20 13:15:17 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,14 @@
 
 void	ft_lstdelone(t_list *lst, void (*del)(void*))
 {
-	del(lst->content);
-	free(lst);
-	lst->next = NULL;
+	t_list	*aux;
+
+	if (lst)
+	{
+		aux = lst;
+		lst = lst->next;
+		del(aux->content);
+		free(aux);
+		aux = NULL;
+	}
 }
