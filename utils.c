@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:39:50 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/23 11:46:29 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/29 13:59:30 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,13 @@ int	ft_key_hook(t_frc *frc)
 
 int	ft_mouse_move(int x, int y, t_frc *frc)
 {
-	frc->str = ft_strjoin("ZOOM = x", ft_itoa((int)(frc->zoom)));
+	frc->str = ft_itoa((int)(frc->zoom));
+	frc->imp = ft_strjoin("ZOOM = x", frc->str);
+	if (frc->str)
+		free(frc->str);
 	if (x > 0 && x <= frc->rx && y > 0 && y <= frc->ry)
-		mlx_string_put(frc->ptr, frc->win, 50, 20, 0x000000, frc->str);
+		mlx_string_put(frc->ptr, frc->win, 50, 20, 0x000000, frc->imp);
+	if (frc->imp)
+		free(frc->imp);
 	return (0);
 }

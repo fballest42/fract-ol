@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:56 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/29 10:07:31 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/29 13:57:53 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ typedef struct s_frc
 	float	cmin;
 	float	diff;
 	char	*str;
+	char	*imp;
 	double	pr;
 	double	pi;
 	double	radio;
