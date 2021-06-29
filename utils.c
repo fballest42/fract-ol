@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:39:50 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/29 15:44:21 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:49:35 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	ft_mouse_move(int x, int y, t_frc *frc)
 	if (frc->str)
 		free(frc->str);
 	if (x > 0 && x <= frc->rx && y > 0 && y <= frc->ry)
-		mlx_string_put(frc->ptr, frc->win, 600, 20, 0x000000, frc->imp);
+		mlx_string_put(frc->ptr, frc->win, 600, 20, 0xFFFFFF, frc->imp);
 	if (frc->imp)
 		free(frc->imp);
 	return (0);

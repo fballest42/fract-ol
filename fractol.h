@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:56 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/29 15:39:17 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:48:39 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,6 +122,7 @@ typedef struct s_frc
 	double	yy;
 	double	incx;
 	double	incy;
+	int		texto;
 	t_key	key;
 }				t_frc;
 

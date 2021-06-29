@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:39:50 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/29 15:39:37 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:52:21 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	ft_helpmenu(t_frc *frc)
 {
-	mlx_string_put(frc->ptr, frc->win, 50, 20, 0x000000,
+	mlx_string_put(frc->ptr, frc->win, 50, 20, 0xFFFFFF,
 		"-- MENU DE AYUDA --");
-	mlx_string_put(frc->ptr, frc->win, 0, 60, 0x000000,
-		"TECLA H == Muestra la ayuda");
-	mlx_string_put(frc->ptr, frc->win, 0, 80, 0x000000,
-		"TECLA C == Modifica el color");
-	mlx_string_put(frc->ptr, frc->win, 0, 100, 0x000000,
-		"TECLA R == Reinicia");
-	mlx_string_put(frc->ptr, frc->win, 0, 120, 0x000000,
-		"FLECHAS == Mueve la imagen");
-	mlx_string_put(frc->ptr, frc->win, 0, 140, 0x000000,
-		"SCROLL RATON O Z/X == Zoom +/-");
-	mlx_string_put(frc->ptr, frc->win, 0, 160, 0x000000,
-		"MOV. RATON == Prueba...");
+	mlx_string_put(frc->ptr, frc->win, 0, 60, 0xFFFFFF,
+		"TECLA H -> Muestra la ayuda");
+	mlx_string_put(frc->ptr, frc->win, 0, 80, 0xFFFFFF,
+		"TECLA C -> Modifica el color");
+	mlx_string_put(frc->ptr, frc->win, 0, 100, 0xFFFFFF,
+		"TECLA R -> Reinicia");
+	mlx_string_put(frc->ptr, frc->win, 0, 120, 0xFFFFFF,
+		"FLECHAS -> Mueve la imagen");
+	mlx_string_put(frc->ptr, frc->win, 0, 140, 0xFFFFFF,
+		"RUEDA RATON O Z/X -> Zoom +/-");
+	mlx_string_put(frc->ptr, frc->win, 0, 160, 0xFFFFFF,
+		"MOV. RATON -> Prueba :-)");
 }
 
 void	ft_restartfractol(t_frc *frc)
