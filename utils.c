@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:39:50 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/29 13:59:30 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/29 15:44:21 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_keypress(int key, t_frc *frc)
 	if (key == ESC_KEY)
 		ft_exit_game(frc);
 	if (key == H_KEY)
-		ft_helpmenu(frc);
+		frc->key.h = 1;
 	return (0);
 }
 
@@ -77,6 +77,8 @@ int	ft_keyrelease(int key, t_frc *frc)
 		frc->key.mas = 0;
 	if (key == X_KEY)
 		frc->key.men = 0;
+	if (key == H_KEY)
+		frc->key.h = 0;
 	return (0);
 }
 
@@ -102,6 +104,8 @@ int	ft_key_hook(t_frc *frc)
 	}
 	else if (frc->key.r == 1)
 		ft_restartfractol(frc);
+	else if (frc->key.h == 1)
+		ft_helpmenu(frc);
 	return (0);
 }
 
@@ -112,7 +116,7 @@ int	ft_mouse_move(int x, int y, t_frc *frc)
 	if (frc->str)
 		free(frc->str);
 	if (x > 0 && x <= frc->rx && y > 0 && y <= frc->ry)
-		mlx_string_put(frc->ptr, frc->win, 50, 20, 0x000000, frc->imp);
+		mlx_string_put(frc->ptr, frc->win, 600, 20, 0x000000, frc->imp);
 	if (frc->imp)
 		free(frc->imp);
 	return (0);
