@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:56 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/23 13:26:51 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/29 10:07:31 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ typedef struct s_frc
 	double	side;
 	double	cx;
 	double	cy;
-	int		xi;
-	int		yi;
+	double	xi;
+	double	yi;
 	int		w;
 	double	xx;
 	double	yy;

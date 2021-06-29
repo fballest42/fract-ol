@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:39:50 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/22 14:09:51 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/29 10:57:37 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	ft_restartfractol(t_frc *frc)
 		ft_juliafractol(frc);
 	else if (frc->fractol == 2)
 		ft_mandelfractol(frc);
+	else
+		ft_newtonfractol(frc);
 }
 
 int	ft_exit_game(t_frc *frc)
