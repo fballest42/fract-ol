@@ -6,7 +6,7 @@
 #    By: fballest <fballest@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/07/21 12:11:55 by fballest          #+#    #+#              #
-#    Updated: 2021/06/23 11:56:00 by fballest         ###   ########.fr        #
+#    Updated: 2021/06/29 13:41:59 by fballest         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,6 +81,9 @@ fclean: clean
 	@echo "$(GREEN)==========TOTALLY REMOVED==========$(RESET)"
 	@echo "Success deepest cleaning"
 
-re : fclean all
+re: fclean all
+
+
+bonus: all
 
 .PHONY: all clean fclean re shell addsuffix

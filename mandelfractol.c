@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:42:05 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/29 10:59:30 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/29 13:28:07 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,7 @@ void	ft_calculatecolor_mandel(t_frc *frc, int x, int y)
 		frc->newRe = frc->oldRe * frc->oldRe - frc->oldIm * frc->oldIm
 			+ frc->pr;
 		frc->newIm = 2 * frc->oldRe * frc->oldIm + frc->pi;
-		if ((frc->newRe * frc->newRe + frc->newIm * frc->newIm) > 4
-			||)
+		if ((frc->newRe * frc->newRe + frc->newIm * frc->newIm) > 4)
 			break ;
 		i++;
 	}

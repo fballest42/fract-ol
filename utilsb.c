@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:39:50 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/29 10:57:37 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/29 13:30:13 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	ft_restartfractol(t_frc *frc)
 	mlx_destroy_window(frc->ptr, frc->win);
 	frc->ptr = NULL;
 	free(frc->ptr);
+	frc->range = 0;
 	if (frc->fractol == 1)
 		ft_juliafractol(frc);
 	else if (frc->fractol == 2)

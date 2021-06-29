@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 11:42:00 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/29 10:58:07 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/29 13:32:17 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,9 @@ void	ft_calculatecolor_newton(t_frc *frc, int x, int y)
 
 void	ft_putpixelnewton(t_frc *frc, int i, int x, int y)
 {
-	frc->h = i % 256;
-	frc->s = 255;
-	frc->v = 255 * (i < frc->max_iter);
+	frc->h = (int)(i + frc->range) % 256;
+	frc->s = 255 - frc->range;
+	frc->v = 255 * (i + frc->range < frc->max_iter);
 	ft_hsv_to_rgb(frc);
 	frc->color = frc->range + (int)ft_to_rgb(frc->r, frc->g, frc->b);
 	ft_mlx_pixel_put(frc, x, y, frc->color);
