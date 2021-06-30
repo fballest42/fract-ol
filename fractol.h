@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:56 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/29 15:48:39 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:49:43 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,7 @@ int		ft_to_rgb(int r, int g, int b);
 void	ft_hsv_to_rgb(t_frc *frc);
 void	ft_hsv_to_rgb2(t_frc *frc);
 void	ft_hsv_to_rgb3(t_frc *frc);
+int		ft_nonpulsed(t_frc *frc);
 
 /*
 **FILE NEWTON

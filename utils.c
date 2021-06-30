@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 12:39:50 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/29 15:49:35 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:47:48 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int	ft_keyrelease(int key, t_frc *frc)
 
 int	ft_key_hook(t_frc *frc)
 {
+	if (ft_nonpulsed(frc) == 0)
+		return (0);
 	if (frc->key.lft == 1)
 		frc->movex = frc->movex - 0.0003 * 50 / frc->zoom;
 	else if (frc->key.rgh == 1)
@@ -111,11 +113,18 @@ int	ft_key_hook(t_frc *frc)
 
 int	ft_mouse_move(int x, int y, t_frc *frc)
 {
+	int	dx;
+	int	dy;
+
+	dx = 0;
+	dy = 0;
 	frc->str = ft_itoa((int)(frc->zoom));
 	frc->imp = ft_strjoin("ZOOM = x", frc->str);
 	if (frc->str)
 		free(frc->str);
-	if (x > 0 && x <= frc->rx && y > 0 && y <= frc->ry)
+	dx = dx - x;
+	dy = dy - y;
+	if (dx != 0 && dy != 0)
 		mlx_string_put(frc->ptr, frc->win, 600, 20, 0xFFFFFF, frc->imp);
 	if (frc->imp)
 		free(frc->imp);

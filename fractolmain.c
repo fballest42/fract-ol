@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/09 10:55:35 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/23 12:02:41 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/30 16:21:10 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,9 @@ int	main(int argc, char **argv)
 			ft_mandelfractol(frc);
 		else if (ft_strncmp(argv[1], "Newton", ft_strlen(argv[1])) == 0)
 			ft_newtonfractol(frc);
+		else
+			ft_exiterror(frc, ft_strjoin("Error:\n",
+					"Choose a fractol name:\nJulia\nMandelbrot\nNewton\n"), -3);
 	}
 	else
 		ft_exiterror(frc, ft_strjoin("Error:\n",

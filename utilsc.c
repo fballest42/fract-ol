@@ -6,7 +6,7 @@
 /*   By: fballest <fballest@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/11 13:57:59 by fballest          #+#    #+#             */
-/*   Updated: 2021/06/29 15:39:33 by fballest         ###   ########.fr       */
+/*   Updated: 2021/06/30 11:56:03 by fballest         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,13 @@ void	ft_hsv_to_rgb3(t_frc *frc)
 		frc->g = frc->p;
 		frc->b = frc->q;
 	}
+}
+
+int	ft_nonpulsed(t_frc *frc)
+{
+	if (frc->key.c || frc->key.h || frc->key.r || frc->key.down
+		|| frc->key.up || frc->key.lft || frc->key.rgh || frc->key.mas
+		|| frc->key.men)
+		return (1);
+	return (0);
 }
