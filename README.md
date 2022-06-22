@@ -1,6 +1,6 @@
 # Fract-ol
 
-### First contact with a C graphic library, concrete mlx.h library. In this project you must create some fractol paints, mandatory is Julia and Mandelbrot. Bonus is to create another fractol image and give some habilities to the paint, like color changing, etc... For more info about requierements of this project you can check this subjects versions in [english](Subject/en.subject.pdf) or [spanish](Subject/es.subject.pdf).
+### First contact with a C graphic library, concrete mlx.h library. In this project you must create some fractol paints, mandatory is Julia and Mandelbrot. Bonus is to create another fractol image and give some habilities to the paint, like color changing, etc... For more info about requierements of this project you can check this subjects versions in [English](Subject/en.subject.pdf) or [Spanish](Subject/es.subject.pdf).
 
 ### If you want to check this program you must compile with "make", after that you will have an executable file named "fractol". To run this executable you must launch it with the fractol name that you desire "Julia", "Mandelbrot" or "Newton". A new window appear with the paint desired. Before use any key be sure that you have enable the paint window by clicking on it.
 
